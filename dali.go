@@ -34,8 +34,8 @@ var (
 const (
 	// each DALI bit is represented by 2 bits
   bps = 1200 			// predefined data rate for DALI
-  stop_bits = 4 	// predefined stop bits for DALI 2x2
-  data_bits = 5 	// how the bits should be packed in a byte
+  stop_bits = 2 	// predefined stop bits for DALI 2x2
+  data_bits = 8 	// how the bits should be packed in a byte
   cmd_bits 	= 38 	// 2x1 + 8x2 + 8x2 + 2x2
 	rsp_bits  = 22	// 2x1 + 8x2 + 2x2
 
