@@ -194,7 +194,7 @@ func Ιssue_dali_request(port Port,dali_address uint8, dali_command uint8) (err 
 		log.Fatal(err)
 		return err
 	}else{
-		log.Println(message)
+		log.Println("sent :%v",message)
 	}
 
  return nil
@@ -216,7 +216,7 @@ func Wait_dali_response(port Port) ([]byte,error){
 	if _, err = port.Read(response); err != nil {
 		log.Fatal(err)
 	}else{
-		log.Println(response)
+		log.Println("read : %v",response)
 	}
 
  return response,nil
