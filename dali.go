@@ -301,6 +301,8 @@ func Ιnitialize_dali(port Port) error {
 		var longadd 		 int64	= (low_longadd + high_longadd) / 2
 		var short_add    uint8
 
+		log.Println("initializating DALI bus")
+
 		// reset the DALI devices
 		err := Ιssue_dali_request(port,BROADCAST_C, RESET)
 		time.Sleep(10 * time.Millisecond)
