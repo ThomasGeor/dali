@@ -33,12 +33,12 @@ var (
 
 const (
 	// each DALI bit is represented by 2 bits
-  bps = 1200 			// predefined data rate for DALI
+  bps 			= 1200 			// predefined data rate for DALI
   stop_bits = 2 	// predefined stop bits for DALI 2x2
   data_bits = 8 	// how the bits should be packed in a byte
   cmd_bits 	= 38 	// 2x1 + 8x2 + 8x2 + 2x2
 	rsp_bits  = 22	// 2x1 + 8x2 + 2x2
-
+	parity 		= "N"
 	// DALI predefined commands
 	BROADCAST_DP 	uint8 = 0b11111110
 	BROADCAST_C 	uint8 = 0b11111111
@@ -69,19 +69,19 @@ type Port interface {
 func Create_Serial_Connection (serial_address string) (Port, error){
 
 	// build the serial object to be able to open the connection
-	flag.StringVar(&address, "a", serial_address, "address")
-	flag.IntVar(&baudrate, "b", bps, "baud rate")
-	flag.IntVar(&databits, "d", data_bits, "data bits")
-	flag.IntVar(&stopbits, "s", stop_bits, "stop bits")
-	flag.StringVar(&parity, "p", "N", "parity (N/E/O)")
-	flag.Parse()
+	// flag.StringVar(&address, "a", serial_address, "address")
+	// flag.IntVar(&baudrate, "b", bps, "baud rate")
+	// flag.IntVar(&databits, "d", data_bits, "data bits")
+	// flag.IntVar(&stopbits, "s", stop_bits, "stop bits")
+	// flag.StringVar(&parity, "p", "N", "parity (N/E/O)")
+	// flag.Parse()
 
 	// pass the data to the serial object
 	config := serial.Config{
-		Address:  address,
-		BaudRate: baudrate,
-		DataBits: databits,
-		StopBits: stopbits,
+		Address:  serial_address,
+		BaudRate: bps,
+		DataBits: data_bits,
+		StopBits: stop_bits,
 		Parity:   parity,
 		Timeout:  30 * time.Second, // Read (Write) timeout.
 	}
