@@ -193,6 +193,8 @@ func Ιssue_dali_request(port Port,dali_address uint8, dali_command uint8) (err 
 	if _, err = port.Write(message); err != nil {
 		log.Fatal(err)
 		return err
+	}else{
+		log.Println(message)
 	}
 
  return nil
@@ -340,7 +342,7 @@ func Ιnitialize_dali(port Port) error {
 				if rsp_err != nil{
 					return rsp_err
 				}
-				
+
 				// cheack in the 3 bytes response if a logic 0 was received
 				if rsp[0] ^ 0xff != 0 || rsp[1] ^ 0xff != 0 || rsp[2] ^ 0xff != 0 {
 					// if a 0 was received that means that at least a device responded
