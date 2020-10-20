@@ -151,11 +151,13 @@ func create_dali_frame(dali_address uint8, dali_command uint8) ([]byte) {
 			}
 
 			if is_bit_set(dali_convert,i){
+				// if DALI bit is 1 -> message bits are 01
 				msg[byte_frame] = msg[byte_frame] &^ (1 << msg_cn) // unset bit -> 0
 				msg_cn --
 		    msg[byte_frame] = msg[byte_frame] | (1<<msg_cn)		// set bit -> 1
 				msg_cn --
 			}else{
+				// if DALI bit is 0 -> message bits are 10
 				msg[byte_frame] = msg[byte_frame] | (1<<msg_cn)		// set bit -> 1
 				msg_cn --
 				msg[byte_frame] = msg[byte_frame] &^ (1 << msg_cn) // unset bit -> 0
@@ -164,6 +166,11 @@ func create_dali_frame(dali_address uint8, dali_command uint8) ([]byte) {
 			}
 		}
 	}
+
+	// finished converting adress and command -> fetch the stop bits
+
+	// add the stop bits in the end of the message
+	msg[byte_frame] |= 0x3F // 0x 00 00 00 -> 0x 11 11 11
 
 	return msg
 
