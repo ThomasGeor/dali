@@ -171,7 +171,6 @@ func create_dali_frame(dali_address uint8, dali_command uint8) ([]byte) {
 
 	// add the stop bits in the end of the message
 	msg[byte_frame] |= 0x3F // 0x 00 00 00 -> 0x 11 11 11
-	log.Println("sent :",msg)
 
 	return msg
 }
@@ -190,6 +189,7 @@ func Ιssue_dali_request(port Port,dali_address uint8, dali_command uint8) (err 
 	// dali commands consist of 8 bits!
 	// dali short addresses consist of 8 bits!
 	// construct the data command based on the user's command (HMI)
+	log.Println("vars :",dali_address,dali_command)
 	message := create_dali_frame(dali_address,dali_command);
 
   // send the message specifically for Dali implementation
