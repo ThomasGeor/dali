@@ -23,11 +23,6 @@ import (
 )
 
 var (
-	// address  string
-	// baudrate int
-	// databits int
-	// stopbits int
-	// parity   string
 	message  []byte
 )
 
@@ -195,7 +190,7 @@ func Ιssue_dali_request(port Port,dali_address uint8, dali_command uint8) (err 
 		log.Fatal(err)
 		return err
 	}else{
-		log.Println("sent :%v",message)
+		log.Println("sent :",message)
 	}
 
  return nil
@@ -217,7 +212,7 @@ func Wait_dali_response(port Port) ([]byte,error){
 	if _, err = port.Read(response); err != nil {
 		log.Fatal(err)
 	}else{
-		log.Println("read : %v",response)
+		log.Println("read : ",response)
 	}
 
  return response,nil
