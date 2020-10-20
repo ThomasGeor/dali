@@ -171,9 +171,9 @@ func create_dali_frame(dali_address uint8, dali_command uint8) ([]byte) {
 
 	// add the stop bits in the end of the message
 	msg[byte_frame] |= 0x3F // 0x 00 00 00 -> 0x 11 11 11
+	log.Println("sent :",msg)
 
 	return msg
-
 }
 
 
