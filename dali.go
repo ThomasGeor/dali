@@ -14,7 +14,7 @@
 package dali
 
 import (
-	"flag"
+	// "flag"
 	"log"
 	"time"
 	"io"
