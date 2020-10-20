@@ -23,11 +23,11 @@ import (
 )
 
 var (
-	address  string
-	baudrate int
-	databits int
-	stopbits int
-	parity   string
+	// address  string
+	// baudrate int
+	// databits int
+	// stopbits int
+	// parity   string
 	message  []byte
 )
 
@@ -39,6 +39,7 @@ const (
   cmd_bits 	= 38 	// 2x1 + 8x2 + 8x2 + 2x2
 	rsp_bits  = 22	// 2x1 + 8x2 + 2x2
 	parity 		= "N"
+
 	// DALI predefined commands
 	BROADCAST_DP 	uint8 = 0b11111110
 	BROADCAST_C 	uint8 = 0b11111111
